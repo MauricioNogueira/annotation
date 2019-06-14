@@ -48,11 +48,24 @@ class FormModal extends Component {
     }
 }
 
+/**
+ * Botão para abrir modal
+ * Obs: Você pode usar um botão próprio para abrir o FormModal
+ * 
+ * Props:
+ * - tituloBotao: Para colocar o texto no botão
+ * - idModalTarget: Id do modal alvo
+ * - tamanhoBotao: Pode adicionar btn-sm (para botão pequeno), btn-lg (para botão grande).
+ *      Obs: Caso não adicione esta props, o botão irá ter o tamanho padrão
+ * - corPrincipal: Pode adicionar primary, danger, success, warning, info
+ * - corTexto: Cor em hexadecimal
+ * - redondo: Adicionar valor e tipo de medida para aplicar este atributo. Ex: 4rem, 4px ...etc
+ */
 export class BotaoModalForm extends Component {
     render() {
         return (
             <div className="text-center">
-                <button className="btn btn-default btn-rounded" data-toggle="modal" data-target={`#${this.props.idModalTarget}`}>{ this.props.tituloBotaoModalForm }</button>
+                <button style={{color: this.props.corTexto, borderRadius: this.props.redondo}} className={`btn btn-${this.props.corPrincipal} ${this.props.tamanhoBotao}`} data-toggle="modal" data-target={`#${this.props.idModalTarget}`}>{ this.props.tituloBotaoModalForm }</button>
             </div>
         );
     }
