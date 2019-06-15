@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class FormModal extends Component {
     render() {
@@ -37,8 +38,8 @@ class FormModal extends Component {
                                 { redesSociais }
                             </div>
                             <div className="modal-footer mx-5 pt-3 mb-1">
-                                <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <a href="#" className="blue-text ml-1">
-                                    Criar conta</a></p>
+                                <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <Link className="blue-text ml-1" to="/teste1">
+                                    Criar conta</Link></p>
                             </div>
                         </div>
                     </div>
@@ -50,7 +51,7 @@ class FormModal extends Component {
 
 /**
  * Botão para abrir modal
- * Obs: Você pode usar um botão próprio para abrir o FormModal
+ * Obs: Você pode usar um botão comum para abrir o FormModal
  * 
  * Props:
  * - tituloBotao: Para colocar o texto no botão
