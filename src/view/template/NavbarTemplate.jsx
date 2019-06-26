@@ -20,7 +20,9 @@ export default class NavbarTemplate extends Component {
                         <BotaoModalForm redondo="1rem" corPrincipal="success" corTexto="#fff" tamanhoBotao="btn-sm" idModalTarget="form-modal" tituloBotaoModalForm="Efetuar login" />
                     </NavLinkRigth>
                 </Navbar>
-                <FormModal idModal="form-modal" tituloModal="Login" tituloBotao="Entrar" />
+                <FormModal idModal="form-modal" tituloModal="Login" tituloBotao="Entrar">
+                    
+                </FormModal>
             </span>
         );
     }

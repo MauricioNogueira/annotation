@@ -23,23 +23,55 @@ class FormModal extends Component {
             <div>
                 <div className="modal fade" id={this.props.idModal} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div className={`modal-dialog`} role="document">
-                        <div className="modal-content form-elegant">      
-                            <div className="modal-header text-center">
-                                <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>{ this.props.tituloModal }</strong></h3>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body mx-4">
-                                { this.props.children }
-                                <div className="text-center mb-3">
-                                    <button type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">{ this.props.tituloBotao }</button>
+                        <div className="modal-content form-elegant">    
+                            <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} class="nav" role="tablist">
+                                <li class="nav-item">
+                                    <a class="btn btn-primary active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+                                    Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-primary" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+                                    Register</a>
+                                </li>
+                            </ul>  
+                            <div className="tab-content">
+                                <div className="tab-pane fade in show active" id="panel7" role="tabpanel">
+                                    <div className="modal-header text-center">
+                                        <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Login</strong></h3>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body mx-4">
+                                        { this.props.children }
+                                        <div className="text-center mb-3">
+                                            <button type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">{ this.props.tituloBotao }</button>
+                                        </div>
+                                        { redesSociais }
+                                    </div>
+                                    <div className="modal-footer mx-5 pt-3 mb-1">
+                                        <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <Link className="blue-text ml-1" to="/teste1">
+                                            Criar conta</Link></p>
+                                    </div>
                                 </div>
-                                { redesSociais }
-                            </div>
-                            <div className="modal-footer mx-5 pt-3 mb-1">
-                                <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <Link className="blue-text ml-1" to="/teste1">
-                                    Criar conta</Link></p>
+                                <div className="tab-pane fade" id="panel8" role="tabpanel">
+                                    <div className="modal-header text-center">
+                                        <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Registrar</strong></h3>
+                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div className="modal-body mx-4">
+                                        { this.props.children }
+                                        <div className="text-center mb-3">
+                                            <button type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Criar</button>
+                                        </div>
+                                    </div>
+                                    <div className="modal-footer mx-5 pt-3 mb-1">
+                                        <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <Link className="blue-text ml-1" to="/teste1">
+                                            Criar conta</Link></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
