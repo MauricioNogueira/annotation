@@ -24,28 +24,35 @@ class FormModal extends Component {
                 <div className="modal fade" id={this.props.idModal} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div className={`modal-dialog`} role="document">
                         <div className="modal-content form-elegant">    
-                            <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} class="nav" role="tablist">
-                                <li class="nav-item">
-                                    <a class="btn btn-primary active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+                            <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} className="nav" role="tablist">
+                                <li className="nav-item">
+                                    <a className="btn btn-primary active" data-toggle="tab" href="#panel7" role="tab"><i className="fas fa-user mr-1"></i>
                                     Login</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="btn btn-primary" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+                                <li className="nav-item">
+                                    <a className="btn btn-primary" data-toggle="tab" href="#panel8" role="tab"><i className="fas fa-user-plus mr-1"></i>
                                     Register</a>
                                 </li>
-                            </ul>  
+                                <button style={{ position: 'absolute', right: '1rem', top: '1rem' }} type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </ul>
                             <div className="tab-content">
                                 <div className="tab-pane fade in show active" id="panel7" role="tabpanel">
                                     <div className="modal-header text-center">
                                         <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Login</strong></h3>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
                                     </div>
                                     <div className="modal-body mx-4">
-                                        { this.props.children }
-                                        <div className="text-center mb-3">
-                                            <button type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">{ this.props.tituloBotao }</button>
+                                        <div>
+                                            <label htmlFor="login">Login</label>
+                                            <input id="login" className="form-control" type="text" name="login" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="senha">Senha</label>
+                                            <input id="senha" className="form-control" type="password" name="password" />
+                                        </div>
+                                        <div className="text-center mb-3 mt-3">
+                                            <button style={{ color: 'white' }} type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Entrar</button>
                                         </div>
                                         { redesSociais }
                                     </div>
@@ -57,13 +64,29 @@ class FormModal extends Component {
                                 <div className="tab-pane fade" id="panel8" role="tabpanel">
                                     <div className="modal-header text-center">
                                         <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Registrar</strong></h3>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
                                     </div>
                                     <div className="modal-body mx-4">
-                                        { this.props.children }
-                                        <div className="text-center mb-3">
+                                        <div>
+                                            <label htmlFor="nome-register">Nome</label>
+                                            <input id="nome-register" className="form-control" type="text" name="nome_register" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="login-register">Login</label>
+                                            <input id="login-register" className="form-control" type="text" name="login_register" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="email-register">Email</label>
+                                            <input id="email-register" className="form-control" type="email" name="email_register" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="password-register">Password</label>
+                                            <input id="password-register" className="form-control" type="password" name="password_register" />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="password-register">Confirmar senha</label>
+                                            <input id="password-confirmation" className="form-control" type="password" name="password_confirmation" />
+                                        </div>
+                                        <div className="text-center mb-3 mt-3">
                                             <button type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Criar</button>
                                         </div>
                                     </div>
