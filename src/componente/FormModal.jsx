@@ -1,7 +1,30 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import $ from 'jquery';
 
 class FormModal extends Component {
+
+    registrarUsuario (event) {
+        event.preventDefault();
+
+        let dadosForm = $('#form-registrar').serializeArray();
+        
+        $.ajax({
+            url: 'http://annotation_api.test/api/v2/registrar',
+            type: 'post',
+            dataType: 'json',
+            data: dadosForm,
+
+            success : function (response) {
+                console.log(response);
+            },
+
+            error : function (error) {
+                console.log(error);
+            }
+        });
+    }
+
     render() {
         let redesSociais = null;
 
@@ -65,31 +88,33 @@ class FormModal extends Component {
                                     <div className="modal-header text-center">
                                         <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Registrar</strong></h3>
                                     </div>
-                                    <div className="modal-body mx-4">
-                                        <div>
-                                            <label htmlFor="nome-register">Nome</label>
-                                            <input id="nome-register" className="form-control" type="text" name="nome_register" />
+                                    <form id="form-registrar">
+                                        <div className="modal-body mx-4">
+                                            <div>
+                                                <label htmlFor="nome-register">Nome</label>
+                                                <input id="nome-register" className="form-control" type="text" name="nome_register" />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="login-register">Login</label>
+                                                <input id="login-register" className="form-control" type="text" name="login_register" />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="email-register">Email</label>
+                                                <input id="email-register" className="form-control" type="email" name="email_register" />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="password-register">Password</label>
+                                                <input id="password-register" className="form-control" type="password" name="password_register" />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="password-register">Confirmar senha</label>
+                                                <input id="password-confirmation" className="form-control" type="password" name="password_confirmation" />
+                                            </div>
+                                            <div className="text-center mb-3 mt-3">
+                                                <button onClick={this.registrarUsuario} type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Criar</button>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <label htmlFor="login-register">Login</label>
-                                            <input id="login-register" className="form-control" type="text" name="login_register" />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="email-register">Email</label>
-                                            <input id="email-register" className="form-control" type="email" name="email_register" />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="password-register">Password</label>
-                                            <input id="password-register" className="form-control" type="password" name="password_register" />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="password-register">Confirmar senha</label>
-                                            <input id="password-confirmation" className="form-control" type="password" name="password_confirmation" />
-                                        </div>
-                                        <div className="text-center mb-3 mt-3">
-                                            <button type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Criar</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                     <div className="modal-footer mx-5 pt-3 mb-1">
                                         <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <Link className="blue-text ml-1" to="/teste1">
                                             Criar conta</Link></p>
