@@ -8,21 +8,33 @@ class FormModal extends Component {
         event.preventDefault();
 
         let dadosForm = $('#form-registrar').serializeArray();
+
+        let newData = this.formatData(dadosForm);
         
         $.ajax({
             url: 'http://annotation_api.test/api/v2/registrar',
             type: 'post',
             dataType: 'json',
-            data: dadosForm,
+            data: {...newData},
 
             success : function (response) {
                 console.log(response);
             },
 
             error : function (error) {
-                console.log(error);
+                console.log(error.responseJSON);
             }
         });
+    }
+
+    formatData(dados) {
+        let newData = [];
+        
+        dados.forEach(element => {
+            newData[element.name] = element.value;
+        });
+        
+        return newData;
     }
 
     render() {
@@ -92,26 +104,26 @@ class FormModal extends Component {
                                         <div className="modal-body mx-4">
                                             <div>
                                                 <label htmlFor="nome-register">Nome</label>
-                                                <input id="nome-register" className="form-control" type="text" name="nome_register" />
+                                                <input id="nome-register" className="form-control" type="text" name="nome" />
                                             </div>
                                             <div>
                                                 <label htmlFor="login-register">Login</label>
-                                                <input id="login-register" className="form-control" type="text" name="login_register" />
+                                                <input id="login-register" className="form-control" type="text" name="login" />
                                             </div>
                                             <div>
                                                 <label htmlFor="email-register">Email</label>
-                                                <input id="email-register" className="form-control" type="email" name="email_register" />
+                                                <input id="email-register" className="form-control" type="email" name="email" />
                                             </div>
                                             <div>
                                                 <label htmlFor="password-register">Password</label>
-                                                <input id="password-register" className="form-control" type="password" name="password_register" />
+                                                <input id="password-register" className="form-control" type="password" name="password" />
                                             </div>
                                             <div>
                                                 <label htmlFor="password-register">Confirmar senha</label>
                                                 <input id="password-confirmation" className="form-control" type="password" name="password_confirmation" />
                                             </div>
                                             <div className="text-center mb-3 mt-3">
-                                                <button onClick={this.registrarUsuario} type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Criar</button>
+                                                <button onClick={this.registrarUsuario.bind(this)} type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Criar</button>
                                             </div>
                                         </div>
                                     </form>
