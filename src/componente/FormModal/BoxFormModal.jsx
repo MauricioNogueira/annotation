@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import $ from 'jquery';
+import { connect } from 'react-redux';
+import { stateProps } from '../../redux/functionConnect';
+import FormLogin from './FormLogin';
+import FormRegister from './FormRegister';
 
 class FormModal extends Component {
+
+    constructor(props) {
+        super();
+        this.host = props.host_api;
+    }
 
     registrarUsuario (event) {
         event.preventDefault();
@@ -12,7 +21,7 @@ class FormModal extends Component {
         let newData = this.formatData(dadosForm);
         
         $.ajax({
-            url: 'http://annotation_api.test/api/v2/registrar',
+            url: this.host+'/api/v2/registrar',
             type: 'post',
             dataType: 'json',
             data: {...newData},
@@ -78,17 +87,7 @@ class FormModal extends Component {
                                         <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Login</strong></h3>
                                     </div>
                                     <div className="modal-body mx-4">
-                                        <div>
-                                            <label htmlFor="login">Login</label>
-                                            <input id="login" className="form-control" type="text" name="login" />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="senha">Senha</label>
-                                            <input id="senha" className="form-control" type="password" name="password" />
-                                        </div>
-                                        <div className="text-center mb-3 mt-3">
-                                            <button style={{ color: 'white' }} type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Entrar</button>
-                                        </div>
+                                        <FormLogin />
                                         { redesSociais }
                                     </div>
                                     <div className="modal-footer mx-5 pt-3 mb-1">
@@ -100,33 +99,7 @@ class FormModal extends Component {
                                     <div className="modal-header text-center">
                                         <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Registrar</strong></h3>
                                     </div>
-                                    <form id="form-registrar">
-                                        <div className="modal-body mx-4">
-                                            <div>
-                                                <label htmlFor="nome-register">Nome</label>
-                                                <input id="nome-register" className="form-control" type="text" name="nome" />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="login-register">Login</label>
-                                                <input id="login-register" className="form-control" type="text" name="login" />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="email-register">Email</label>
-                                                <input id="email-register" className="form-control" type="email" name="email" />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="password-register">Password</label>
-                                                <input id="password-register" className="form-control" type="password" name="password" />
-                                            </div>
-                                            <div>
-                                                <label htmlFor="password-register">Confirmar senha</label>
-                                                <input id="password-confirmation" className="form-control" type="password" name="password_confirmation" />
-                                            </div>
-                                            <div className="text-center mb-3 mt-3">
-                                                <button onClick={this.registrarUsuario.bind(this)} type="button" className="btn blue-gradient btn-block btn-rounded z-depth-1a">Criar</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <FormRegister registrarUsuario={this.registrarUsuario.bind(this)} />
                                     <div className="modal-footer mx-5 pt-3 mb-1">
                                         <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <Link className="blue-text ml-1" to="/teste1">
                                             Criar conta</Link></p>
@@ -164,4 +137,4 @@ export class BotaoModalForm extends Component {
     }
 }
 
-export default FormModal;
+export default connect(stateProps)(FormModal);

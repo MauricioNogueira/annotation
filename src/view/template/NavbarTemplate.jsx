@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Navbar, NavLinkLeft, NavLinkRigth, NavLink, DropDownLink, DropLink} from '../../componente/Navbar';
-import FormModal, {BotaoModalForm} from '../../componente/FormModal';
+import FormModal, {BotaoModalForm} from '../../componente/FormModal/BoxFormModal';
 
 export default class NavbarTemplate extends Component {
     render() {
