@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Jumbotron = (props) => {
-    console.log(props);
     let extra = null;
 
     if (props.isExtra) {

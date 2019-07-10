@@ -11,6 +11,9 @@ class FormModal extends Component {
     constructor(props) {
         super();
         this.host = props.host_api;
+        this.state = {
+            errors: {}
+        }
     }
 
     registrarUsuario (event) {
@@ -31,8 +34,10 @@ class FormModal extends Component {
             },
 
             error : function (error) {
-                console.log(error.responseJSON);
-            }
+                // console.log(error.responseJSON);
+                this.setState({errors: error.responseJSON});
+                // console.log(this);
+            }.bind(this)
         });
     }
 
@@ -99,7 +104,7 @@ class FormModal extends Component {
                                     <div className="modal-header text-center">
                                         <h3 className="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Registrar</strong></h3>
                                     </div>
-                                    <FormRegister registrarUsuario={this.registrarUsuario.bind(this)} />
+                                    <FormRegister registrarUsuario={this.registrarUsuario.bind(this)} errors={this.state.errors} />
                                     <div className="modal-footer mx-5 pt-3 mb-1">
                                         <p className="font-small grey-text d-flex justify-content-end">Não é um membro? <Link className="blue-text ml-1" to="/teste1">
                                             Criar conta</Link></p>
