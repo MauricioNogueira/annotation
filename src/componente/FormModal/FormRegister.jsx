@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Input } from '../Form';
 
-export default class FormRegister extends Component {
-    removeError(input) {
-        document.getElementById("error-"+input.target.name).innerHTML = "";
-    }
+const PubSub = require('pubsub.js');
 
+export default class FormRegister extends Component {
     render() {
-        Object.entries(this.props.errors).map(value => {
-            // let div = document.getElementById("error-"+value[0]);
-            // div.innerHTML = value[1][0];
-            console.log(value);
-        });
+        // let erros = [];
+        // console.log(this.props.errors);
+        PubSub.publish("error-validation-register", [this.props.errors]);
+
+        // Object.entries(this.props.errors).map(value => {
+        //     erros[value[0]] = value[1][0];
+            
+        //     return value;
+        // });
         
         return (
             <form id="form-registrar">

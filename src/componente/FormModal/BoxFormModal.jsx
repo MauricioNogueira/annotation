@@ -34,9 +34,8 @@ class FormModal extends Component {
             },
 
             error : function (error) {
-                // console.log(error.responseJSON);
+                // $("#form-registrar").addClass("was-validated");
                 this.setState({errors: error.responseJSON});
-                // console.log(this);
             }.bind(this)
         });
     }
@@ -76,11 +75,11 @@ class FormModal extends Component {
                             <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} className="nav" role="tablist">
                                 <li className="nav-item">
                                     <a className="btn btn-primary active" data-toggle="tab" href="#panel7" role="tab"><i className="fas fa-user mr-1"></i>
-                                    Login</a>
+                                    Entrar</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="btn btn-primary" data-toggle="tab" href="#panel8" role="tab"><i className="fas fa-user-plus mr-1"></i>
-                                    Register</a>
+                                    Registrar</a>
                                 </li>
                                 <button style={{ position: 'absolute', right: '1rem', top: '1rem' }} type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
