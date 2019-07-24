@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { stateProps } from '../../redux/functionConnect';
 import FormLogin from './FormLogin';
 import FormRegister from './FormRegister';
+import PubSub from '../../pubsub';
 
 class FormModal extends Component {
 
@@ -29,12 +30,16 @@ class FormModal extends Component {
             dataType: 'json',
             data: {...newData},
 
+            beforeSend : function () {
+                PubSub.publish("loading", [true]);
+            },
+
             success : function (response) {
                 console.log(response);
             },
 
             error : function (error) {
-                // $("#form-registrar").addClass("was-validated");
+                PubSub.publish("loading", [false]);
                 this.setState({errors: error.responseJSON});
             }.bind(this)
         });
@@ -71,7 +76,7 @@ class FormModal extends Component {
             <div>
                 <div className="modal fade" id={this.props.idModal} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div className={`modal-dialog`} role="document">
-                        <div className="modal-content form-elegant">    
+                        <div className="modal-content form-elegant">
                             <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }} className="nav" role="tablist">
                                 <li className="nav-item">
                                     <a className="btn btn-primary active" data-toggle="tab" href="#panel7" role="tab"><i className="fas fa-user mr-1"></i>

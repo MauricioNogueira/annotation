@@ -1,0 +1,15 @@
+.style-loading {
+    background-color: rgba(0,0,0,0.3);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+
+.icon-loading {
+    color: white;
+    /* top: 50%;
+    left: 50%;
+    position: absolute; */
+    /* transform: translate(-50%, -50%); */
+}
