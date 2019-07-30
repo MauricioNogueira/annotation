@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import IndexView from './view/IndexView';
 import NavbarTemplate from './view/template/NavbarTemplate';
+import Footer, {FooterSub} from './componente/Footer';
 
 import { connect } from 'react-redux';
 import { stateProps } from './redux/functionConnect';
@@ -39,6 +40,9 @@ export const TemplateDefault = () => {
                 <RoutePublic exact path="/" component={IndexView} />
                 <Route component={() => <h1>Pagina nao foi encontrada</h1>} />
             </Switch>
+            <Footer footerSub={<FooterSub />}>
+                sdgashgdg
+            </Footer>
         </Route>
     );
 }

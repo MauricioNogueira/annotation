@@ -17,6 +17,14 @@ class FormModal extends Component {
         }
     }
 
+    componentDidMount() {
+        $("#"+this.props.idModal).modal({
+            show: false,
+            keyboard: false,
+            backdrop: 'static'
+        });
+    }
+
     registrarUsuario (event) {
         event.preventDefault();
 

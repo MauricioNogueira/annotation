@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import $ from 'jquery';
 import PubSub from '../pubsub';
 
-export class Input extends Component {
+export class InputValidation extends Component {
     constructor(props) {
         super();
 
@@ -36,6 +36,7 @@ export class Input extends Component {
     removeError() {
         this.setState({error: ""});
         $("#"+this.campos.id).removeClass("is-invalid");
+        $("#"+this.campos.id).removeClass("is-valid");
     }
 
     setError(valor) {
